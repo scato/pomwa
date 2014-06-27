@@ -1290,7 +1290,12 @@ var Reveal = (function(){
 			// Select all slides
 			toArray( document.querySelectorAll( SLIDES_SELECTOR ) ).forEach( function( slide ) {
 				// Resets all transforms to use the external styles
-				transformElement( slide, '' );
+				//transformElement( slide, '' );
+                // changed by @scataco
+                transformElement( slide, 'translateZ(0) translate(0%, 0%)' );
+                setTimeout(function () {
+                    transformElement( slide, '' );
+                }, 800);
 
 				slide.removeEventListener( 'click', onOverviewSlideClicked, true );
 			} );

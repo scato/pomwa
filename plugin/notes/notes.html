@@ -231,6 +231,12 @@
 
 					}, 1000 );
 
+                    window.addEventListener('keyup', function (e) {
+                        if (e.keyCode === 82) {
+                            start = new Date();
+                        }
+                    }, false);
+
 					// Broadcasts the state of the notes window to synchronize
 					// the main window
 					function synchronizeMainWindow() {

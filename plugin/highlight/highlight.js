@@ -6,6 +6,12 @@
 		for( var i = 0, len = hljs_nodes.length; i < len; i++ ) {
 			var element = hljs_nodes[i];
 
+            // Hack added by Scato: fix indentation
+            if( element.hasAttribute( 'data-unindent' )) {
+                var baseIndent = element.innerHTML.match(/^[\n\r]*[ \t]*/)[0];
+                element.innerHTML = element.innerHTML.replace(new RegExp(baseIndent, 'g'), "\n");
+            }
+
 			// trim whitespace if data-trim attribute is present
 			if( element.hasAttribute( 'data-trim' ) && typeof element.innerHTML.trim === 'function' ) {
 				element.innerHTML = element.innerHTML.trim();
@@ -18,7 +24,11 @@
 
 			// re-highlight when focus is lost (for edited code)
 			element.addEventListener( 'focusout', function( event ) {
-				hljs.highlightBlock( event.currentTarget );
+                if (element.hasAttribute('data-lang')) {
+                    hljs.highlightBlock( element.getAttribute('data-lang'), event.currentTarget );
+                } else {
+                    hljs.highlightBlock( event.currentTarget );
+                }
 			}, false );
 		}
 	}

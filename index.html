@@ -4,18 +4,18 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Patterns of Modern Web Application</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="How to organize the JavaScript part of your project">
+		<meta name="author" content="Scato Eggen">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -37,24 +37,28 @@
 	</head>
 
 	<body>
+        <style>
+            .reveal section img.badge {
+                box-shadow: none;
+                border: none;
+                background: none;
+                max-width: 33%;
+                vertical-align: middle;
+            }
+
+            .reveal section img.solution {
+                max-width: 45%;
+            }
+        </style>
 
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>Patterns of Modern Web Applications</h1>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
+						<small>by Scato Eggen / <a href="http://twitter.com/scataco">@scataco</a></small>
 					</p>
 
 					<aside class="notes">
@@ -62,303 +66,1363 @@
 					</aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
+                    <img src="img/incarnation-30.jpg" style="float: left; width: 200px">
+					<h2>About Me</h2>
 					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
+                        <ul>
+                            <li class="fragment">Grunge Music / Capoeira</li>
+                            <li class="fragment">Senior Developer @ Ibuildings</li>
+                            <li class="fragment">MSc in Physics</li>
+                            <li class="fragment">Education / History / Philosophy</li>
+                        </ul>
 					</p>
 				</section>
 
-				<section>
-					<h2>Point of View</h2>
+                <section>
+                    <h2>"Modern Web Application"</h2>
+                    <p>
+                        What does that even mean?
+                    </p>
+                    <ul>
+                        <li class="fragment">Flashy</li>
+                        <li class="fragment">Good-looking</li>
+                        <li class="fragment">Fast</li>
+                        <li class="fragment">Responsive</li>
+                        <li class="fragment">Real-time<br>&nbsp;</li>
+                        <li class="fragment">Cheap &amp; Maintainable</li>
+                    </ul>
+
+                    <aside class="notes">
+                        <p>
+                            Research shows that if your page takes ... ms to load,
+                            half of your users will abandon your site.
+                        </p>
+                        <p>
+                            Product owners <em>always</em> want to change something
+                            after the project is done. And often even before that
+                            happens.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <style>
+                        .photo-overlay {
+                            position: absolute;
+                            top: -80%;
+                            left: 50%;
+                            -webkit-transform-origin: 0 50%;
+                            width: 80%;
+                        }
+
+                        .reveal section .photo-overlay img,
+                        .reveal section .photo-overlay table {
+                            margin: 0 50% 0 -50%;
+                        }
+
+                        .reveal section .photo-overlay span {
+                            position: absolute;
+                            bottom: 50%;
+                            left: -50%;
+                            text-align: center;
+                            width: 100%;
+                            font-size: 1.5em;
+                            color: white;
+                            text-shadow: black 0px 0px 5px;
+                        }
+
+                        #photo-overlay-1 {
+                            -webkit-transform: rotate(-5deg) translateY(-90px);
+                        }
+
+                        #photo-overlay-4, #photo-overlay-6 {
+                            -webkit-transform: rotate(-5deg);
+                        }
+
+                        #photo-overlay-2, #photo-overlay-3, #photo-overlay-7 {
+                            -webkit-transform: rotate(5deg);
+                        }
+                    </style>
+
+                    <section>
+                        <h2>Common Solutions</h2>
+                        <p>Lots of JavaScript!!!</p>
+                        <div class="fragment photo-overlay" id="photo-overlay-1">
+                            <img src="img/problems/mud.jpg">
+                            <span>Big Ball of Mud</span>
+                        </div>
+                        <div class="fragment photo-overlay" id="photo-overlay-2">
+                            <img src="img/problems/monkeys.jpg">
+                            <span>AJAX all over the place</span>
+                        </div>
+                        <aside class="notes">
+                            <p>Big Ball of Mud</p>
+                            <ul>
+                                <li>Couple of lines</li>
+                                <li>Clean up later</li>
+                                <li>End of project, one big file</li>
+                            </ul>
+                            <p>AJAX</p>
+                            <ul>
+                                <li>More responsive</li>
+                                <li>Callbacks everywhere</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Common Solutions</h2>
+                        <p>JavaScript MVC</p>
+                        <img src="img/tools/backbone.png" style="border: none; width: 30%; box-shadow: none;">
+                        <img src="img/tools/ember.png" style="border: none; box-shadow: none; width: 18%; margin: 0 0 -90px 0;">
+                        <br>
+                        <img src="img/tools/AngularJS-large.png" style="border: none; width: 30%; box-shadow: none; margin: 0 190px 0 0;">
+                        <div style="position: relative; top: -350px;">
+                        <div class="fragment photo-overlay" id="photo-overlay-3">
+                            <img src="img/problems/plumbing.jpg">
+                            <span>Too much plumbing</span>
+                        </div>
+                        <div class="fragment photo-overlay" id="photo-overlay-4">
+                            <img src="img/problems/layers.jpg">
+                            <span>Too many layers</span>
+                        </div>
+                        <aside class="notes">
+                            <p>Plumbing</p>
+                            <ul>
+                                <li>More work</li>
+                                <li>Event handlers, DOM manipulation</li>
+                                <li>Server communication</li>
+                                <li>Part of the database in memory</li>
+                            </ul>
+                            <p>Layers</p>
+                            <ul>
+                                <li>Templates, Views/Controllers, Models &amp; AJAX</li>
+                                <li>Web API, More models</li>
+                                <li>Database</li>
+                                <li>Add one field...</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Every solution leads to more problems</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>The Solution<br><small>To The Problems With The Solution</small></h2>
+                    <div class="fragment photo-overlay" id="photo-overlay-6">
+                        <img src="img/solutions/gryphon.jpg" style="width: 70%">
+                        <span>A combination of both</span>
+                    </div>
+                    <div class="fragment photo-overlay" id="photo-overlay-7">
+                        <img src="img/solutions/designpatterns1_sm.jpg" style="width: 70%">
+                        <span>Design patterns</span>
+                    </div>
+                    <div class="fragment photo-overlay" id="photo-overlay-8">
+                        <img src="img/solutions/attack.jpg" style="width: 70%">
+                        <span>A plan of attack</span>
+                    </div>
+                    <aside class="notes">
+                        <p>Combination</p>
+                        <ul>
+                            <li>non-MVC &amp; MVC</li>
+                            <li>Get better at them</li>
+                        </ul>
+                        <p>Design Patterns</p>
+                        <ul>
+                            <li>Discuss design</li>
+                        </ul>
+                        <p>Plan</p>
+                        <ul>
+                            <li>Strategy we agree on</li>
+                            <li>Work as a team</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Fictional Case: usic.com</h2>
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/index.jpg">
+
+                        <aside class="notes">
+                            <p>Find reviews and discover new music</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/register.jpg">
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/survey.jpg">
+
+                        <aside class="notes">
+                            <p>Sociological study on musical taste</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/editor.jpg">
+
+                        <aside class="notes">
+                            <p><strong>"music board"</strong></p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/profile.jpg">
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/chat.jpg">
+
+                        <aside class="notes">
+                            <p>Modern: popovers...</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/usic.com/contact.jpg">
+
+                        <aside class="notes">
+                            <p>... and modals</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <!-- PART I -->
+
+                <section>
+                    <h2>Why not MVC?</h2>
+                    
+                    <img src="img/problems/no-plumbing.png" class="badge">
+
+                    <aside class="notes">
+                        <p>Why JavaScript MVC harder than Web MVC?</p>
+                        <p>What is MVC?</p>
+                    </aside>
+                </section>
+
+                <style>
+                    .state rect {
+                        stroke: black;
+                        fill: white;
+                    }
+
+                    .state text {
+                        text-anchor: middle;
+                    }
+
+                    .arrow path {
+                        stroke: black;
+                        stroke-width: 3px;
+                    }
+
+                    .arrow text {
+                        font-size: 25px;
+                    }
+
+                    .first {
+                        -webkit-transform: translate(400px, 0px);
+                    }
+
+                    .first-to-second {
+                        -webkit-transform: translate(500px, 100px);
+                    }
+
+                    .second {
+                        -webkit-transform: translate(400px, 150px);
+                    }
+
+                    .second-to-third {
+                        -webkit-transform: translate(500px, 250px);
+                    }
+
+                    .third {
+                        -webkit-transform: translate(400px, 300px);
+                    }
+
+                    .third-to-fourth {
+                        -webkit-transform: translate(500px, 400px);
+                    }
+
+                    .fourth {
+                        -webkit-transform: translate(400px, 450px);
+                    }
+                </style>
+
+                <svg>
+                    <defs>
+                        <marker id="triangle-start"
+                            viewBox="0 0 10 10" 
+                            refX="1" refY="5"
+                            markerWidth="5" 
+                            markerHeight="5"
+                            orient="auto">
+                            <path d="M 10 0 L 0 5 L 10 10 z" />
+                        </marker>
+                        <marker id="triangle-end"
+                            viewBox="0 0 10 10" 
+                            refX="1" refY="5"
+                            markerWidth="5" 
+                            markerHeight="5"
+                            orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" />
+                        </marker>
+                    </defs>
+                </svg>
+
+                <script>
+                    var classes = ['first', 'second', 'third', 'fourth'];
+                    var current;
+                    function start() { current = 0; }
+                    function state(text) { document.write(
+                        '<g class="state ' + classes[current] + '">' +
+                        '<rect width="200" height="100" rx="10" ry="10" />' +
+                        '<text x="100" y="60">' + text + '</text>' +
+                        '</g>'
+                    ); current++; }
+                    function arrow(text) { text = text || ''; document.write(
+                        '<g class="arrow ' + classes[current - 1] + '-to-' + classes[current] + '">' +
+                        '<path d="M 0 0 L 0 35" marker-start="url(#triangle-start)" marker-end="url(#triangle-end)" />' +
+                        '<text x="20" y="35">' + text + '</text>' +
+                        '</g>'
+                    ); }
+                    function arrows(left, right) { document.write(
+                        '<g class="arrow ' + classes[current - 1] + '-to-' + classes[current] + '">' +
+                        '<path d="M -10 0 L -10 50" marker-start="url(#triangle-start)" />' +
+                        '<path d="M 10 0 L 10 35" marker-end="url(#triangle-end)" />' +
+                        '<text x="-30" y="35" text-anchor="end">' + left + '</text>' +
+                        '<text x="30" y="35">' + right + '</text>' +
+                        '</g>'
+                    ); }
+                </script>
+
+                <section>
+                    <h2>Organizing Presentation Logic</h2>
+
+                    <svg style="height: 450px;">
+                        <script>
+                            start();
+                            state('Screen');
+                            arrow();
+                            state('Session');
+                            arrow();
+                            state('Record');
+                        </script>
+                    </svg>
+                    <p><i>Martin Fowler, EAA Dev</i></p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Server-side</h2>
+
+                        <svg style="height: 450px;">
+                            <script>
+                                start();
+                                state('Screen');
+                                arrow();
+                                state('Request');
+                                arrow();
+                                state('Record');
+                            </script>
+                        </svg>
+                    </section>
+
+                    <section>
+                        <h2>Server-side</h2>
+
+                        <svg style="height: 450px;">
+                            <script>
+                                start();
+                                state('Screen');
+                                arrows('HTML', 'x-www-form-url-encoded');
+                                state('Request');
+                                arrow('SQL');
+                                state('Record');
+                            </script>
+                        </svg>
+                    </section>
+
+                    <section>
+                        <h2>Server-side</h2>
+
+                        <svg style="height: 450px;">
+                            <script>
+                                start();
+                                state('Screen');
+                                arrows('View', 'Controller');
+                                state('Request');
+                                arrow('ORM');
+                                state('Record');
+                            </script>
+                        </svg>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Client-side</h2>
+
+                        <svg style="height: 450px;">
+                            <script>
+                                start();
+                                state('Screen');
+                                arrow();
+                                state('Session');
+                                arrow();
+                                state('Server');
+                            </script>
+                        </svg>
+                    </section>
+
+                    <section>
+                        <h2>Client-side</h2>
+
+                        <svg style="height: 450px;">
+                            <script>
+                                start();
+                                state('Screen');
+                                arrows('DOM', 'DOM');
+                                state('Session');
+                                arrow('AJAX');
+                                state('Server');
+                            </script>
+                        </svg>
+                    </section>
+
+                    <section>
+                        <h2>Client-side</h2>
+
+                        <svg style="height: 450px;">
+                            <script>
+                                start();
+                                state('Screen');
+                                arrows('View', 'Controller');
+                                state('Session');
+                                arrow('REST');
+                                state('Server');
+                            </script>
+                        </svg>
+                    </section>
+                </section>
+
+                <style>
+                    .reveal section .diagram table {
+                        font-size: 28px;
+                        border-collapse: collapse;
+                        margin: auto;
+                    }
+                    .reveal section .diagram th {
+                        text-align: center;
+                    }
+                    .reveal section .diagram td {
+                        text-align: center;
+                        padding: 0 10px;
+                        border: 2px solid #333;
+                    }
+                    .reveal section .diagram tr.client td {
+                        background-color: #ff8;
+                    }
+                    .reveal section .diagram tr.server td {
+                        background-color: #8f8;
+                    }
+                    .reveal section .diagram tr.client:nth-child(2) td:nth-child(1),
+                    .reveal section .diagram tr.client:nth-child(3) td:nth-child(1),
+                    .reveal section .diagram tr.client td:nth-child(2),
+                    .reveal section .diagram tr.server td:nth-child(2) {
+                        background-color: transparent;
+                        border: none;
+                    }
+                </style>
+
+                <section>
+                    <h2>Client/Server</h2>
+
+                    <svg style="height: 600px;">
+                        <script>
+                            start();
+                            state('Screen');
+                            arrows('View', 'Controller');
+                            state('Session');
+                            arrow('REST');
+                            state('Request');
+                            arrow('ORM');
+                            state('Record');
+                        </script>
+                    </svg>
+
+                    <aside class="notes">
+                        <p>2 problems &#8594; 3 problems</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Client/Server</h2>
+
+                    <div class="diagram">
+                        <table>
+                            <tr class="client"><th>non-MVC</th><th></th><th>MVC</th></tr>
+                            <tr class="client"><td></td><td></td><td>View + Controller</td></tr>
+                            <tr class="client"><td></td><td></td><td>Model</td></tr>
+                            <tr class="client"><td>CSS + JavaScript</td><td></td><td>AJAX</td></tr>
+                            <tr class="server"><td>View + Controller</td><td></td><td>Controller</td></tr>
+                            <tr class="server"><td colspan="3">Model</td></tr>
+                            <tr class="server"><td colspan="3">Database</td></tr>
+                        </table>
+                    </div>
+
+                    <aside class="notes">
+                        <p>Combine non-MVC with MVC</p>
+                        <p>Non-MVC: easier to maintain, progressive enhancement, no re-render</p>
+                        <p>MVC: harder to maintain, Separated Presentation, complex behavior</p>
+                    </aside>
+                </section>
+
+                <!-- PART II -->
+
+                <section>
+                    <h2>Organizing Your Front-end</h2>
+
+                    <img src="img/solutions/yes-attack.png" class="badge solution">
+                    <img src="img/problems/no-mud.png" class="badge">
+
+                    <aside class="notes">
+                        <p>What do we agree on?</p>
+                        <p>What are best practices?</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Semantic HTML</h2>
+
+                        <p>6 rules</p>
+                    </section>
+
+                    <section>
+                        <h2>#1: No style attributes</h2>
+
+                        <p>Bad:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div style="color: red;">This is not a valid email address</div>
+                        </code></pre>
+
+                        <p>Good:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div class="error">This is not a valid email address</div>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>#2: No script attributes</h2>
+
+                        <p>Bad:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <a href="#" onclick="openModal('/contact')">Contact</a>
+                        </code></pre>
+
+                        <p>Good:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <a href="javascript:;" class="contact-link">Contact</a>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>#3: No inline style or script tags</h2>
+
+                        <p>Bad:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <style>
+                                .error {
+                                    color: red;
+                                }
+                            </style>
+
+                            <script>
+                                function openModal(url) {
+                                    // TODO
+                                }
+                            </script>
+                        </code></pre>
+
+                        <p>Good:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <link href="css/register.css" rel="stylesheet" type="text/css">
+
+                            <script src="js/menu.js"></script>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>#4: Use semantic class names</h2>
+
+                        <p>Bad:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div class="red">This is not a valid email address</div>
+                        </code></pre>
+
+                        <p>Good:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div class="error">This is not a valid email address</div>
+                        </code></pre>
+
+                        <aside class="notes">
+                            <p>The <em>thing</em> you style</p>
+                            <p>Not the <em>way</em> you style it</p>
+                    </section>
+
+                    <section>
+                        <h2>#5: Use semantic tags</h2>
+
+                        <p>Bad:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div class="lead">This is not a <i>disclaimer</i>.</div>
+                        </code></pre>
+
+                        <p>Good:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div class="lead">This is not a <em>disclaimer</em>.</div>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>#6: Follow the structure of your content</h2>
+
+                        <p>Bad:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <div class="menu">
+                                <span class="menu-item"><a href="/">Home</a></span>
+                                <span class="menu-item"><a href="/register">Register</a></span>
+                            </div>
+                        </code></pre>
+
+                        <p>Good:</p>
+                        <pre><code data-unindent data-trim class="language-xml">
+                            <ul class="menu">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/register">Register</a></li>
+                            </ul>
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Module Pattern</h2>
+                        
+                        <pre><code data-unindent data-trim class="language-javascript">
+                            (function () {
+                                var local = 0;
+
+                                $('.counter').click(function () {
+                                    local += 1;
+                                });
+                            }());
+                        </code></pre>
+
+                        <p><i>Douglas Crockford, JavaScript: The Good Parts</i></p>
+                        
+                        <aside class="notes">
+                            <p>"Don't leave home without it!"</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>The Module Pattern (return)</h2>
+                        
+                        <pre><code data-unindent data-trim class="language-javascript">
+                            var myNamespace = (function () {
+                                var local = 0;
+
+                                $('.counter').click(function () {
+                                    local += 1;
+                                });
+
+                                return {
+                                    count: function () {
+                                        return local;
+                                    }
+                                };
+                            }());
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>The Module Pattern (exports)</h2>
+                        
+                        <pre><code data-unindent data-trim class="language-javascript">
+                            var myNamespace = {};
+
+                            (function (exports) {
+                                var local = 0;
+
+                                $('.counter').click(function () {
+                                    local += 1;
+                                });
+
+                                exports.count = function () {
+                                    return local;
+                                };
+                            }(myNamespace));
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Asynchronous Module Definition (AMD)</h2>
+                        
+                        <p>Used by RequireJS</p>
+
+                        <pre><code data-unindent data-trim class="language-javascript">
+                            define(['jquery'], function ($) {
+                                var local = 0;
+
+                                $('.counter').click(function () {
+                                    local += 1;
+                                });
+
+                                return {
+                                    count: function () {
+                                        return local;
+                                    }
+                                };
+                            });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>CommonJS Module Definition</h2>
+                        
+                        <p>Used by Browserify and Node.js</p>
+
+                        <pre><code data-unindent data-trim class="language-javascript">
+                            var $ = require('jquery');
+
+                            var local = 0;
+
+                            $('.counter').click(function () {
+                                local += 1;
+                            });
+
+                            exports.count = function () {
+                                return local;
+                            };
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>CSS Preprocessors</h2>
+
+                        <pre><code class="language-css" data-trim data-unindent>
+                            .menu li {
+                                border-radius: 4px;
+                                background-color: #753A26;
+                            }
+
+                            #account-register input[type="submit"] {
+                                border-radius: 4px;
+                                background-color: #753A26;
+                            }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>CSS Preprocessors</h2>
+
+                        <pre><code class="language-css" data-trim data-unindent>
+                            .menu li,
+                            #account-register input[type="submit"] {
+                                border-radius: 4px;
+                                background-color: #753A26;
+                            }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>CSS Preprocessors</h2>
+
+                        <pre><code class="language-scss" data-trim data-unindent>
+                            @mixin primary-button() {
+                                border-radius: 4px;
+                                background-color: #753A26;
+                            }
+
+                            .menu li {
+                                @include primary-button();
+                            }
+
+                            #account-register input[type="submit"] {
+                                @include primary-button();
+                            }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>CSS Preprocessors</h2>
+
+                        <table style="margin: 0 auto">
+                            <tr>
+                                <td><img src="img/tools/sass-logo.png" style="border: none; max-width: 150px; border: none; box-shadow: none"></td>
+                                <td style="vertical-align: middle;">vs</td>
+                                <td style="vertical-align: middle;"><img style="border: none; border: none; box-shadow: none" src="img/tools/less_logo.png"></td>
+                            </tr>
+                        </table>
+
+                        <aside class="notes">
+                            <p>Sass is better: conditionals and loops</p>
+                            <p>Blog post on CSS Tricks by Chris Coyier</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>CSS Preprocessors</h2>
+
+                        <p>Just try it!</p>
+
+                        <aside class="notes">
+                            <p>There's not excuse not to use a CSS Preprocessor</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Asset Pipeline</h2>
+
+                        <ul>
+                            <li class="fragment">Concatenate (CSS/JS)</li>
+                            <li class="fragment">Minify/compress (CSS/JS)</li>
+                            <li class="fragment">Compile (Sass/Less)</li>
+                            <li class="fragment">Optimize (RequireJS/Browserify)</li>
+                            <li class="fragment">Versioning/cache buster</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Grunt</h2>
+
+                        <img src="img/tools/grunt-logo.png" style="border: none; box-shadow: none">
+                    </section>
+                </section>
+
+                <!-- PART III -->
+
+                <section>
+                    <h2>Page Modules</h2>
+
+                    <img src="img/solutions/yes-patterns.png" class="badge solution">
+                    <img src="img/problems/no-monkeys.png" class="badge">
+
+                    <aside class="notes">
+                        <p>Modules... but what to isolate?</p>
+                        <p>Alternatives to AJAX</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Page Module Pattern</h2>
+
+                        <p>views/account/register.template:</p>
+
+                        <pre><code class="language-xml" data-trim data-unindent>
+                            <div id="account-register">
+                                <form>
+                                    <!-- ... -->
+                                </form>
+                            </div>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>The Page Module Pattern</h2>
+
+                        <p>css/account/register.css:</p>
+
+                        <pre><code class="language-css" data-trim data-unindent>
+                            #account-register form {
+                                /* ... */
+                            }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>The Page Module Pattern</h2>
+
+                        <p>js/account/register.js:</p>
+
+                        <pre><code class="language-javascript" data-trim data-unindent>
+                            $('#account-register').each(function () {
+                                // ...
+                            });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>The Page Module Pattern</h2>
+
+                        <p>It's about <em>isolation</em></p>
+
+                        <img src="img/usic.com/register.jpg" style="max-height: 70%">
+                    </section>
+
+                    <section>
+                        <h2>The Page Module Pattern</h2>
+
+                        <p>Use common stylesheets for:</p>
+
+                        <ul>
+                            <li>Page layout</li>
+                            <li>Header styling</li>
+                            <li>Paragraph spacing</li>
+                            <li>Anything in the "common" section of a style guide</li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong>Note</strong>: good style guides can be hard to come by</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Presentation Patterns</h2>
+
+                        <p><em>Add custom behavior</em></p>
+                    </section>
+
+                    <section>
+                        <h2>Widget</h2>
+                        
+                        <img src="img/usic.com/menu.jpg" style="max-width: 50%">
+                        <img src="img/usic.com/avatar.jpg" style="max-width: 50%">
+                        <img src="img/usic.com/progress.jpg" style="max-width: 50%">
+                    </section>
+
+                    <section>
+                        <h2>Widget</h2>
+
+                        <p>css/shared/menu.css:</p>
+
+                        <pre><code class="language-css" data-trim data-unindent>
+                            .shared-menu a[href] {
+                                /* ... */
+                            }
+                        </code></pre>
+
+                        <p>js/shared/menu.js:</p>
+
+                        <pre><code class="language-javascript" data-trim data-unindent>
+                            $('.shared-menu').each(function () {
+                                // ...
+                            });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Validation Rule</h2>
+
+                        <pre><code class="language-javascript" data-trim data-unindent>
+                            $.validator.addMethod('strong-password', function (value, element) {
+                                // ...
+                            });
+                        </code></pre>
+
+                        <pre><code class="language-xml" data-trim data-unindent>
+                            <input type="password" strong-password="true">
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Data Patterns</h2>
+
+                        <p><em>Add extra screen state without roundtrips to the server</em></p>
+                    </section>
+
+                    <section>
+                        <h2>Hidden Input</h2>
+
+                        <pre><code class="language-xml" data-trim data-unindent>
+                            <div class="shared-avatar">
+                                <input type="hidden" name="avatarId" value="3">
+                                <!-- ... -->
+                            </div>
+                        </code></pre>
+
+                        <img src="img/usic.com/avatar.jpg" style="max-width: 50%">
+                    </section>
+
+                    <section>
+                        <h2>Data Attribute</h2>
+
+                        <pre><code class="language-xml" data-trim data-unindent>
+                            <span class="shared-progress" data-value="1" data-max="10"></span>
+                        </code></pre>
+
+                        <img src="img/usic.com/progress.jpg" style="max-width: 50%">
+                    </section>
+
+                    <section>
+                        <h2>Data Literal</h2>
+
+                        <pre><code class="language-xml" data-trim data-unindent>
+                            <script>
+                                var genreList = [
+                                    {"id": 1, "name": "Post-Grunge"},
+                                    {"id": 2, "name": "Post-Hardcore"}
+                                ];
+                            </script>
+                        </code></pre>
+
+                        <img src="img/usic.com/genre-list.jpg" style="max-width: 50%">
+
+                        <aside class="notes">
+                            <p>Trade-off: inline js and global var!</p>
+                            <p>Content Security Policy header :(</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Integration Patterns</h2>
+
+                        <p><em>Update screen state with data from the server</em></p>
+                    </section>
+
+                    <section>
+                        <h2>HTML Fragment</h2>
+
+                        <pre><code class="language-javascript" data-trim data-unindent>
+                            $('.shared-menu').each(function () {
+                                var $menu = $(this);
+
+                                $menu.find('.contact-link').click(function () {
+                                    $.get('/shared/contact', function (data) {
+                                        $('#modal .modal-dialog').html(data);
+                                        $('#modal').modal('show');
+                                    });
+                                });
+                            });
+                        </pre></code>
+
+                        <img src="img/usic.com/contact.jpg" style="max-width: 50%">
+
+                        <aside class="notes">
+                            <p>No client-side templates</p>
+                            <p>No Web APIs</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>AJAX Form</h2>
+
+                        <pre><code class="language-javascript" data-trim data-unindent>
+                            $('.shared-login').each(function () {
+                                var $login = $(this);
+
+                                $login.find('form').submit(function () {
+                                    $.post('/shared/login', $(this).serialize(), function (data) {
+                                        $login.html(data);
+                                    });
+                                });
+                            });
+                        </pre></code>
+
+                        <aside class="notes">
+                            <p>POST</p>
+                            <p>Some "technical difficulties"</p>
+                            <ul>
+                                <li>How to close a modal...</li>
+                                <li>How to reinitialize the login widget...</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <!-- PART IV -->
+
+                <section>
+                    <h2>JavaScript MVC</h2>
+                    
+                    <img src="img/solutions/yes-gryphon.png" class="badge solution">
+                    <img src="img/problems/no-layers.png" class="badge">
+
+                    <aside class="notes">
+                        <p>We know what to do with non-MVC</p>
+                        <p>When to use JavaScript MVC?</p>
+                        <p>How to prevent lasagna code?</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Do I Need One?</h2>
+
+                        <table style="margin: auto">
+                            <tr>
+                                <td>
+                                    <p>Page Modules</p>
+                                    <ul>
+                                        <li class="fragment">Isolated components</li>
+                                        <li class="fragment">Extra behavior</li>
+                                        <li class="fragment">No session state</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>JavaScript MVC</p>
+                                    <ul>
+                                        <li class="fragment">Interacting components</li>
+                                        <li class="fragment">Complex behavior</li>
+                                        <li class="fragment">Client-side session state</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                        
+                <section>
+                    <section>
+                        <h2>Isolated components</h2>
+
+                        <img src="img/usic.com/menu.jpg" style="max-width: 50%">
+                        <img src="img/usic.com/avatar.jpg" style="max-width: 50%">
+                        <img src="img/usic.com/progress.jpg" style="max-width: 50%">
+                    </section>
+
+                    <section>
+                        <h2>Extra behavior</h2>
+
+                        <img src="img/usic.com/register.jpg">
+                    </section>
+
+                    <section>
+                        <h2>No session state</h2>
+
+                        <img src="img/usic.com/survey.jpg">
+                    </section>
+                </section>
+                        
+                <section>
+                    <section>
+                        <h2>JavaScript MVC</h2>
+
+                        <img src="img/usic.com/applet.jpg">
+
+                        <aside class="notes">
+                            <p>JavaScript MVC</p>
+                            <ul>
+                                <li>Interacting components (add item to board)</li>
+                                <li>Complex behavior (drag, rotate)</li>
+                                <li>Client-side session state (save session state to server)</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+                        
+                <section>
+                    <section>
+                        <h2>Lasagna Code</h2>
+
+                        <p>
+                            Code that is divided in several well-defined and separable layers,
+                            but where individual layers in the system are highly unstructured or disorganized.
+                        </p>
+                        <p><i>Joe Celko</i></p>
+                    </section>
+                            
+                    <section>
+                        <h2>Lasagna Code</h2>
+
+                        <ul>
+                            <li class="fragment">Low cohesion within layers</li>
+                            <li class="fragment">Hard to find stuff</li>
+                            <li class="fragment">Tight coupling between layers</li>
+                            <li class="fragment">Every change touches multiple layers</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <style>
+                        .reveal .term {
+                            position: absolute;
+                            background-color: white;
+                            border-top-left-radius: 125px 50px;
+                            border-top-right-radius: 125px 50px;
+                            border-bottom-left-radius: 125px 50px;
+                            border-bottom-right-radius: 125px 50px;
+                            height: 80px;
+                            width: 250px;
+                            border: 1px solid black;
+                            line-height: 40px;
+                            padding: 15px 0 5px 0;
+                        }
+                    </style>
+
+                    <section>
+                        <h2>Client-side Model</h2>
+
+                        <div style="position: relative; height: 250px">
+                            <span style="left: 350px; top: 25px; line-height: 70px" class="term">DTO</span>
+                            <span style="left: 150px; top: 150px;" class="term">Presentation Model</span>
+                            <span style="left: 550px; top: 125px; line-height: 70px" class="term">View Model</span>
+                            <span style="left: 375px; top: 250px;" class="term">Application Model</span>
+                        </div>
+                        
+                        <aside class="notes">
+                            <p>Different from the server-side model</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Don't expose your entities!</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>REST is not <em>the answer</em></h2>
+
+                        <div class="diagram larger">
+                            <table>
+                                <tr><td>Level 3: Hypermedia Controls</td></tr>
+                                <tr><td>Level 2: HTTP Verbs</td></tr>
+                                <tr><td>Level 1: Resources</td></tr>
+                                <tr><td>Level 0: RPC</td></tr>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>REST Level 1.5</h2>
+
+                        <p>Hypermedia without PUT and DELETE</p>
+
+                        <pre><code data-unindent data-trim class="language-json">
+                            {
+                                "_links": {
+                                    "self": { "href": "/user/music-board" }
+                                },
+                                ...
+                            }
+                        </code></pre>
+
+                        <aside class="notes">
+                            <p>Hyperlinks work best with "networky" data, like users, bands, other users</p>
+                        </aside>
+                    </section>
+                </section>
+                        
+                <section>
+                    <h2>One Bundle, One Asset</h2>
+
+                    <p style="font-family: monospace; text-align: left; width: 40%; margin: auto">bundle.js</p>
+                    <p class="fragment" style="font-family: monospace; text-align: left; width: 40%; margin: auto">shared/menu.js</p>
+                    <p class="fragment" style="font-family: monospace; text-align: left; width: 40%; margin: auto">account/board.js</p>
+
+                    <aside class="notes">
+                        <p>Bundled into one asset, next to Widgets and Page Modules</p>
+                        <p>No way to include half a bundle</p>
+                        <p>Don't mix in Widgets and Page Modules</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Conclusion</h2>
+
+                    <aside class="notes">
+                        <p>To summarize</p>
+                    </aside>
+                </section>
+
+                <style>
+                    .reveal section .diagram.larger td {
+                        padding: 20px 50px;
+                    }
+                </style>
+
+                <section>
+                    <h2>Polyglot Architecture</h2>
+
+                    <div class="diagram larger">
+                        <table>
+                            <tr><td>Page Modules</td><td>JavaScript MVC</td></tr>
+                            <tr><td>Web MVC</td><td>Web API</td></tr>
+                        </table>
+                    </div>
+
+                    <aside class="notes">
+                        <p>Complexity where you need it</p>
+                        <p>Side by side without problems</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Further Reading</h2>
+
+                    <ul>
+                        <li>
+                            EAA Dev<br>
+                            Martin Fowler<br>
+                            <small><a href="http://martinfowler.com/eaaDev/" target="_blank">http://martinfowler.com/eaaDev/</a></small>
+                        </li>
+                        <li>
+                            Enterprise Integration Patterns<br>
+                            Gregor Hohpe &amp; Bobby Woolf<br>
+                            <small><a href="http://www.eaipatterns.com/toc.html" target="_blank">http://www.eaipatterns.com/toc.html</a></small>
+                        </li>
+                        <li>
+                            JavaScript: The Good Parts<br>
+                            Douglas Crockford
+                        </li>
+                    </ul>
+
+                    <aside class="notes">
+                        <p>EAA Dev, very interesting</p>
+                        <p>EIP, if you're getting into Web Sockets</p>
+                        <p>Good Parts, if you haven't already</p>
+                    </aside>
+                </section>
+
+                <section style="height: 450px">
+                    <h1>The End</h1>
 					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
+						<small>by Scato Eggen / <a href="http://twitter.com/scataco">@scataco</a></small>
 					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
-
+                    <p>Questions?</p>
+                    <p style="text-align: center; margin-top: 250px">
+                        <small>
+                            All images licensed under Creative Commons, by:
+                            Maurice Vanderfeesten,
+                            Rennette Stowe,<br>
+                            Rajeev3065,
+                            ちいた,
+                            CEphoto, Uwe Aranas,
+                            Eric Hadley-Ives,
+                            Jason McDonald &amp;
+                            National Guard
+                        </small>
+                    </ul>
+                </section>
 			</div>
 
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="js/reveal.js"></script>
 
 		<script>
 
